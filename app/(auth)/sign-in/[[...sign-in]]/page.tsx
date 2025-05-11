@@ -13,7 +13,7 @@ export default function SignInPage() {
         <div className="grid grid-cols-2 min-h-screen">
             <div className="flex flex-cols items-center justify-center">
                 <ClerkLoaded>
-                    <SignIn path="/sign-in" routing="path" forceRedirectUrl="/dashboard"/>
+                    <SignIn path="/sign-in" routing="path" forceRedirectUrl="/overview"/>
                 </ClerkLoaded>
                 <ClerkLoading>
                     <Loader2 className="animate-spin text-muted foreground" />

@@ -6,11 +6,11 @@ import { NavButton } from "@/components/navbar/components/navbar-button";
 const navLinks = [
     {
         name: "Overview",
-        href: "/dashboard",
+        href: "/overview",
     },
     {
         name: "Owned",
-        href: "/dashboard/owned"
+        href: "/owned"
     }
 ];
 

@@ -1,14 +1,22 @@
-
-"use client";
+"use client"
+import { Loader2 } from "lucide-react";
 
 import { useUser } from "@clerk/nextjs";
-import { NavbarHome } from "./navbar-home";
-import { NavbarDashboard } from "./navbar-dashboard";
+
+import { NavbarHome } from "@/components/navbar/navbar-home";
+import { NavbarDashboard } from "@/components/navbar/navbar-dashboard";
+import { NavbarShell } from "@/components/navbar/components/navbar-shell";
 
 export const NavbarWrapper = () => {
   const { isSignedIn, isLoaded } = useUser();
 
-  if (!isLoaded) return null; // optional spinner
+  if (!isLoaded) {
+    return (
+        <NavbarShell>
+            <Loader2 />
+        </NavbarShell>
+    )
+  };
 
   return isSignedIn ? <NavbarDashboard /> : <NavbarHome />;
 };
