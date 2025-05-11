@@ -23,7 +23,7 @@ export const ComponentCard = ({title, stockCard}: Props) => {
             </CardHeader>
             <CardContent>
                 {stockCard}
-                <p>More</p>
+                <p className="flex justify-end">More</p>
             </CardContent>
         </Card>
     );
