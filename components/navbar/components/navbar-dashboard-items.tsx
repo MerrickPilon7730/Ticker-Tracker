@@ -11,7 +11,11 @@ const navLinks = [
     {
         name: "Owned",
         href: "/owned"
-    }
+    },
+    {
+        name: "Search",
+        href: "/search"
+    },
 ];
 
 export const NavbarItemsDashboard = () => {
