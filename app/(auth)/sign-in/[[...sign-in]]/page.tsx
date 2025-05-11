@@ -10,8 +10,8 @@ import {
 
 export default function SignInPage() {
     return (
-        <div className="grid grid-cols-2 min-h-screen">
-            <div className="flex flex-cols items-center justify-center">
+        <div className="grid grid-cols-2">
+            <div className="flex flex-cols items-center justify-center mt-20">
                 <ClerkLoaded>
                     <SignIn path="/sign-in" routing="path" forceRedirectUrl="/overview"/>
                 </ClerkLoaded>
@@ -20,7 +20,7 @@ export default function SignInPage() {
                 </ClerkLoading>
             </div>
             <div>
-
+                {/*TODO: Add */}
             </div>
         </div>
     )

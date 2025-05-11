@@ -10,14 +10,17 @@ import {
 
 export default function SignUpPage() {
     return (
-        <div className="grid grid-cols-2 min-h-screen">
-            <div className="flex flex-cols items-center justify-center">
+        <div className="grid grid-cols-2">
+            <div className="flex flex-cols items-center justify-center mt-20">
                 <ClerkLoaded>
                     <SignUp path="/sign-up"/>
                 </ClerkLoaded>
                 <ClerkLoading>
                     <Loader2 className="animate-spin text-muted foreground" />
                 </ClerkLoading>
+            </div>
+            <div>
+
             </div>
         </div>
     )
