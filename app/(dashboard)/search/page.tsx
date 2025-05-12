@@ -10,7 +10,7 @@ export default async function SearchPage(){
 
     return(
         <div className="flex flex-cols items-center justify-center">
-            <div className="grid grid-cols-2 items-center justify-center gap-x-15 w-[80%]">
+            <div className="grid grid-cols-2 items-center justify-center gap-x-15 w-[80%] mt-4">
                 <div className="grid">
                     <ComponentCard 
                         key={"Top Gainers"} 
@@ -25,7 +25,7 @@ export default async function SearchPage(){
                                     price={"$"+gainers.price}
                                     change_amount={"$"+gainers.change_amount}
                                 />
-                            ))}
+                            ))} 
                             </div>
                         }
                     />
