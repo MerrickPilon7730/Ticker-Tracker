@@ -1,5 +1,4 @@
 
-import { ReactNode } from "react";
 
 import { 
     Card,
@@ -7,16 +6,13 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { CircleArrowRight } from "lucide-react";
 
 type Props = {
     title: string,
-    stockCard?: ReactNode,
     bg?: string,
-    more?: string
 }
 
-export const ComponentCard = ({title, stockCard, bg, more}: Props) => {
+export const ComponentCard = ({title, bg}: Props) => {
     return(
         <Card className={`${bg ? bg : "bg-gradient-to-b from-emerald-500 to-slate-600"} border-none`}>
             <CardHeader>
@@ -24,15 +20,8 @@ export const ComponentCard = ({title, stockCard, bg, more}: Props) => {
                     <h1 className="text-2xl">{title}</h1>
                 </CardTitle>
             </CardHeader>
-            <CardContent>
-                {stockCard}
-                <div className="flex justify-end gap-x-2 mt-2">
-                    More 
-                    <CircleArrowRight 
-                        className={`${more ? more :"text-emerald-500"}`} 
-                    />
-                </div>
-                
+            <CardContent className="items-center justify-center">
+                Content
             </CardContent>
         </Card>
     );

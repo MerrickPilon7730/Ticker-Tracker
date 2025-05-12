@@ -2,7 +2,7 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 
-import alphaVantage from "./alpha-vantage"
+import twelveData from "./twelve-data"
 
 export const runtime = "edge"
 
@@ -10,7 +10,7 @@ const app = new Hono().basePath("/api")
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const routes = app
-    .route("/alpha-vantage", alphaVantage)
+    .route("/twelve-data", twelveData)
 
 export const GET = handle(app)
 
