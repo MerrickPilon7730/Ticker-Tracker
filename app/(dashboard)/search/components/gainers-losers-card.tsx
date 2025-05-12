@@ -12,11 +12,12 @@ type Props = {
     price: string,
     change_amount: string,
     change_percentage: string,
+    bg?: string,
 }
 
-export const GainersLosersCard = ({title, price, change_amount, change_percentage}: Props) => {
+export const GainersLosersCard = ({title, price, change_amount, change_percentage, bg}: Props) => {
     return(
-        <Card className="bg-emerald-600 hover:bg-emerald-300 border-none">
+        <Card className={`${bg ? bg: "bg-emerald-600 hover:bg-emerald-300"} border-none`}>
             <CardHeader>
                 <CardTitle className="text-sm font-bold">
                     <div className="flex justify-between">

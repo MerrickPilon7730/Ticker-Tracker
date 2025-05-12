@@ -34,6 +34,8 @@ export default async function SearchPage(){
                     <ComponentCard 
                         key={"Top Losers"} 
                         title="Top Losers" 
+                        bg="bg-gradient-to-b from-red-500 to-slate-600"
+                        more="text-red-500"
                         stockCard={
                             <div className="grid grid-cols-2 gap-4">
                             {topFourLosers.map((losers) => (
@@ -43,6 +45,7 @@ export default async function SearchPage(){
                                     change_percentage={losers.change_percentage}
                                     price={"$"+losers.price}
                                     change_amount={"$"+losers.change_amount}
+                                    bg="bg-red-500 hover:bg-red-300"
                                 />
                             ))}
                             </div>
