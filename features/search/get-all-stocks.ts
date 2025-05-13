@@ -1,16 +1,23 @@
-type Props = {
+type Stock = {
     symbol: string,
     name: string,
     currency: string,
     exchange: string,
 };
 
-export const getAllStocks = async (): Promise<Props[]> => {
-    const res = await fetch("http://localhost:3000/api/twelve-data/get-stocks");
+export type StockAPIResponse = {
+  data: Stock[];
+  count: number;
+  status: string;
+};
 
-    if (!res.ok) {
+export const getAllStocks = async (): Promise<StockAPIResponse> => {
+    const response = await fetch("http://localhost:3000/api/twelve-data/get-stocks");
+
+    if (!response.ok) {
         throw new Error("Failed to fetch data");
     }
 
-    return res.json();
+    const data = await response.json();
+    return data;
 };

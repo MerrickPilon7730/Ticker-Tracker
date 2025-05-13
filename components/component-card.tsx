@@ -10,9 +10,10 @@ import {
 type Props = {
     title: string,
     bg?: string,
+    content: React.ReactNode,
 }
 
-export const ComponentCard = ({title, bg}: Props) => {
+export const ComponentCard = ({title, bg, content}: Props) => {
     return(
         <Card className={`${bg ? bg : "bg-gradient-to-b from-emerald-500 to-slate-600"} border-none`}>
             <CardHeader>
@@ -21,7 +22,7 @@ export const ComponentCard = ({title, bg}: Props) => {
                 </CardTitle>
             </CardHeader>
             <CardContent className="items-center justify-center">
-                Content
+                {content}
             </CardContent>
         </Card>
     );
