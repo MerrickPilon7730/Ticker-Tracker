@@ -6,7 +6,6 @@ export type Stock = {
     symbol: string,
     name: string,
     exchange: string,
-    price: string,
 };
 
 export const columns: ColumnDef<Stock>[] = [
@@ -22,12 +21,4 @@ export const columns: ColumnDef<Stock>[] = [
         accessorKey: "exchange",
         header: "Exchange",
     },
-    {
-        accessorKey: "price",
-        header: "Price",
-        cell: ({row}) => {
-            const price = parseFloat(row.getValue("price"));
-            return `$${price.toFixed(2)}`;
-        }
-    }
 ]
