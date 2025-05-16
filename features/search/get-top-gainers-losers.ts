@@ -17,7 +17,17 @@ const GainersLosersData = z.object({
     most_actively_traded: z.array(StockData),
 });
 
+let cachedData: z.infer<typeof GainersLosersData> | null = null;
+let lastFetchTime = 0;
+const CACHE_DURATION = 1000 * 120; 
+
 export const getTopGainersLosers = async (): Promise<z.infer<typeof GainersLosersData>> => {
+    const now = Date.now();
+
+    if (cachedData && now - lastFetchTime < CACHE_DURATION) {
+        return cachedData;
+    }
+
     const response = await fetch("http://localhost:3000/api/alpha-vantage/gainers-losers");
 
     if (!response.ok) {
@@ -26,6 +36,9 @@ export const getTopGainersLosers = async (): Promise<z.infer<typeof GainersLoser
 
     const json = await response.json();
     const data = GainersLosersData.parse(json);
+
+    cachedData = data;
+    lastFetchTime = now;
     
     return data;
 }
