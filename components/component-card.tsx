@@ -10,7 +10,7 @@ import {
 type Props = {
     title: string,
     bg?: string,
-    content: React.ReactNode,
+    content?: React.ReactNode,
 }
 
 export const ComponentCard = ({title, bg, content}: Props) => {
