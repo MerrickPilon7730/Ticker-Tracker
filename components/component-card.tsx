@@ -21,7 +21,7 @@ export const ComponentCard = ({title, bg, content}: Props) => {
                     <h1 className="text-2xl">{title}</h1>
                 </CardTitle>
             </CardHeader>
-            <CardContent className="items-center justify-center">
+            <CardContent className="flex items-center justify-center">
                 {content}
             </CardContent>
         </Card>
