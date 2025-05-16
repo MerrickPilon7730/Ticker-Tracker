@@ -21,6 +21,7 @@ export default function SearchPage() {
   }, []);
 
   if (loading) return <div className="text-center py-10">Loading...</div>;
+  // TODO: change this to a skeleton
 
   return (
     <div>
@@ -29,6 +30,7 @@ export default function SearchPage() {
           <div className="w-full max-w-[90%]">
             <ComponentCard 
               title="Top Gainers"
+              content={<GainersLosersCard title="Stock1"/>}
             />
           </div>
         </div>

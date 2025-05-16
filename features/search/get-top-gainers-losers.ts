@@ -1,13 +1,7 @@
 
 import {z} from "zod";
 
-const StockData = z.object({
-    symbol: z.string(),
-    price: z.string(),
-    change_amount: z.string(),
-    change_percentage: z.string(),
-    volume: z.string(),
-});
+import { StockData } from "@/Schemas/stock-schema";
 
 const GainersLosersData = z.object({
     metadata: z.string(),
