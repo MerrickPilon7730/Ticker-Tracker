@@ -24,15 +24,27 @@ export default function SearchPage() {
 
   return (
     <div>
-      <div className="grid grid-cols-2 mb-4">
+      <div className="grid grid-cols-3 mb-4">
         <div className="flex justify-center">
           <div className="w-full max-w-[90%]">
-            <GainersLosersCard title="Top Gainers"/>
+            <ComponentCard 
+              title="Top Gainers"
+            />
           </div>
         </div>
         <div className="flex justify-center">
           <div className="w-full max-w-[90%]">
-            <GainersLosersCard title="Top Losers"/>
+            <ComponentCard 
+              title="Top Losers" 
+              bg="bg-gradient-to-b from-red-500 to-slate-600"
+            />
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <div className="w-full max-w-[90%]">
+            <ComponentCard 
+              title="Most Traded"
+            />
           </div>
         </div>
       </div>
@@ -41,7 +53,11 @@ export default function SearchPage() {
           <ComponentCard
             title="Search"
             content={
-              <StockTable columns={columns} filterKey="name" data={stocks} />
+              <StockTable 
+                columns={columns} 
+                filterKey="name" 
+                data={stocks} 
+              />
             }
           />
         </div>
