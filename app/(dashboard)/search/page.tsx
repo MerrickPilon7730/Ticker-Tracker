@@ -7,6 +7,8 @@ import { columns } from "./components/stock-columns";
 import { getAllStocks, StockAPIResponse } from "@/features/search/get-all-stocks";
 import { Stock } from "./components/stock-columns";
 import { TopGainersGrid } from "./components/gainers-grid";
+import { TopLosersGrid } from "./components/losers-grid";
+import { TopTradedGrid } from "./components/most-traded-grid";
 
 export default function SearchPage() {
   const [stocks, setStocks] = useState<Stock[]>([]);
@@ -39,6 +41,7 @@ export default function SearchPage() {
             <ComponentCard 
               title="Top Losers" 
               bg="bg-gradient-to-b from-red-500 to-slate-600"
+              content={<TopLosersGrid />}
             />
           </div>
         </div>
@@ -46,6 +49,7 @@ export default function SearchPage() {
           <div className="w-full max-w-[90%]">
             <ComponentCard 
               title="Most Traded"
+              content={<TopTradedGrid/>}
             />
           </div>
         </div>

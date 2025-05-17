@@ -19,7 +19,7 @@ export const GainersLosersCard = ({ title, stock}: StockProps) => {
   const changeAmount = Number(stock.change_amount);
   const isGain = changeAmount >=0;
 
-  const prefix = isGain ? "+" : "-";
+  const prefix = isGain ? "+" : "";
   const bgColor = (isGain ? "bg-emerald-500 hover:bg-emerald-400": "bg-red-500 hover:bg-red-400")
 
   return (
@@ -39,7 +39,7 @@ export const GainersLosersCard = ({ title, stock}: StockProps) => {
       </CardHeader>
       <CardContent className="grid grid-cols-1 items-center justify-center">
         <div className="flex justify-between">
-          <p>{prefix}${Number(stock.change_amount).toFixed(2)}</p>
+          <p>${prefix}{Number(stock.change_amount).toFixed(2)}</p>
           <p>${Number(stock.price).toFixed(2)}</p>
         </div>
       </CardContent>
