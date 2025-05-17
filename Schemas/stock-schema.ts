@@ -6,7 +6,6 @@ export const StockData = z.object({
   price: z.string(),
   change_amount: z.string(),
   change_percentage: z.string(),
-  volume: z.string(),
 });
 
 export type StockDataType = z.infer<typeof StockData>;
