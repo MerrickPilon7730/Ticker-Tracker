@@ -1,4 +1,5 @@
 
+import { ArrowRightCircleIcon } from "lucide-react";
 
 import { 
     Card,
@@ -11,9 +12,10 @@ type Props = {
     title: string,
     bg?: string,
     content?: React.ReactNode,
+    more?: React.ReactNode,
 }
 
-export const ComponentCard = ({title, bg, content}: Props) => {
+export const ComponentCard = ({title, bg, content, more}: Props) => {
     return(
         <Card className={`${bg ? bg : "bg-gradient-to-b from-emerald-500 to-slate-600"} border-none`}>
             <CardHeader>
@@ -24,6 +26,14 @@ export const ComponentCard = ({title, bg, content}: Props) => {
             <CardContent className="flex items-center justify-center">
                 {content}
             </CardContent>
-        </Card>
+            {more ? (
+                more
+                ) : (
+                <div className="flex justify-end gap-2 mr-6">
+                    <p>More</p>
+                    <ArrowRightCircleIcon className="cursor-pointer"/>
+                </div>
+            )}
+        </Card> 
     );
 };
