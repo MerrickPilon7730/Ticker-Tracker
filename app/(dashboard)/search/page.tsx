@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from "react";
 import { ComponentCard } from "@/components/component-card";
@@ -6,7 +6,7 @@ import { StockTable } from "./components/stock-table";
 import { columns } from "./components/stock-columns";
 import { getAllStocks, StockAPIResponse } from "@/features/search/get-all-stocks";
 import { Stock } from "./components/stock-columns";
-import { GainersLosersCard } from "./components/gainers-losers-card";
+import { TopGainersGrid } from "./components/gainers-grid";
 
 export default function SearchPage() {
   const [stocks, setStocks] = useState<Stock[]>([]);
@@ -28,10 +28,10 @@ export default function SearchPage() {
       <div className="grid grid-cols-3 mb-4">
         <div className="flex justify-center">
           <div className="w-full max-w-[90%]">
-            <ComponentCard 
-              title="Top Gainers"
-              content={<GainersLosersCard title="Stock1"/>}
-            />
+                <ComponentCard 
+                  title="Top Gainers"
+                  content={<TopGainersGrid />}
+                />
           </div>
         </div>
         <div className="flex justify-center">
