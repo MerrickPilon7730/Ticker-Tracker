@@ -1,7 +1,6 @@
 
-import {z} from "zod";
 
-import { StockData } from "@/Schemas/stock-schema";
+import { StockDataType } from "@/Schemas/stock-schema";
 
 import { 
     Card,
@@ -12,7 +11,7 @@ import {
 
 type StockProps = {
   title: string;
-  stock: z.infer<typeof StockData>;
+  stock: StockDataType;
   onclick: () => void;
 };
 

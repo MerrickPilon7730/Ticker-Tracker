@@ -2,26 +2,24 @@
 
 import { useEffect, useState } from "react";
 
-import {z} from "zod";
-
 import { getTopFourLosers } from "@/features/search/get-top-gainers-losers";
 
 import { StockModal } from "@/components/stock-modal";
 
 import { GainersLosersCard } from "./gainers-losers-card";
 
-import { StockData } from "@/Schemas/stock-schema";
+import { StockDataType } from "@/Schemas/stock-schema";
 
 export const TopLosersGrid = () => {
-  const [losers, setLosers] = useState<z.infer<typeof StockData>[]>([]);
-  const [selectedStock, setSelectedStock] = useState<z.infer<typeof StockData> | null>(null);
+  const [losers, setLosers] = useState<StockDataType[]>([]);
+  const [selectedStock, setSelectedStock] = useState<StockDataType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getTopFourLosers().then(setLosers);
   }, []);
 
-    const handleCardClick = (stock: z.infer<typeof StockData>) => {
+    const handleCardClick = (stock: StockDataType) => {
     setSelectedStock(stock);
     setIsModalOpen(true);
   };
