@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { getTopFourTraded } from "@/features/search/get-top-gainers-losers";
+import { getAllGainers } from "@/features/search/get-top-gainers-losers";
 
 import { StockModal } from "@/components/stock-modal";
 
@@ -10,13 +10,13 @@ import { GainersLosersCard } from "./gainers-losers-card";
 
 import { StockDataType } from "@/Schemas/stock-schema";
 
-export const TopTradedGrid = () => {
-  const [traded, setTraded] = useState<StockDataType[]>([]);
-   const [selectedStock, setSelectedStock] = useState<StockDataType | null>(null);
+export const TopGainersGrid = () => {
+  const [gainers, setGainers] = useState<StockDataType[]>([]);
+  const [selectedStock, setSelectedStock] = useState<StockDataType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    getTopFourTraded().then(setTraded);
+    getAllGainers().then(setGainers);
   }, []);
 
   const handleCardClick = (stock: StockDataType) => {
@@ -25,14 +25,14 @@ export const TopTradedGrid = () => {
   };
 
   return (
-    <>
+     <>
       <div className="grid grid-cols-2 gap-4 w-full auto-rows-min">
-        {traded.map((stock) => (
+        {gainers.map((stock) => (
           <GainersLosersCard
             key={stock.ticker}
             title={stock.ticker}
             stock={stock}
-            onclick={() => handleCardClick(stock)}
+            onClick={() => handleCardClick(stock)}
           />
         ))}
       </div>
