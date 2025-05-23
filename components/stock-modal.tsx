@@ -28,7 +28,6 @@ export const StockModal = ({ isOpen, onClose, stock }: Props) => {
     <Card className="bg-gradient-to-b from-emerald-500 to-slate-600 p-4 border-none">
       <CardHeader className="flex justify-between items-center">
         <CardTitle>{stock.ticker} Details</CardTitle>
-        <button onClick={onClose} className="text-red-500 font-bold text-lg">&times;</button>
       </CardHeader>
       <CardContent className="space-y-2 max-h-[70vh] overflow-y-auto">
         <p><strong>Price:</strong> ${Number(stock.price).toFixed(2)}</p>

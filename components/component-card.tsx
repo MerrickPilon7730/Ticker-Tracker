@@ -62,12 +62,6 @@ export const ComponentCard = ({
             <Card className="bg-gradient-to-b from-emerald-500 to-slate-600 p-4 border-none">
               <CardHeader className="flex justify-between items-center">
                 <CardTitle className="text-3xl pb-2">{title}</CardTitle>
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="text-red-500 font-bold text-lg"
-                >
-                  &times;
-                </button>
               </CardHeader>
               <CardContent className="space-y-2 max-h-[70vh] overflow-y-auto">
                 {moreContent}

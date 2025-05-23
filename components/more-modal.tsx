@@ -14,7 +14,7 @@ type Props = {
   content: React.ReactNode,
 };
 
-export const MoreModal = ({ isOpen, onClose, title, content }: Props) => {
+export const MoreModal = ({ isOpen, title, content }: Props) => {
   if (!isOpen) return null;
 
   return (
@@ -22,7 +22,6 @@ export const MoreModal = ({ isOpen, onClose, title, content }: Props) => {
       <Card className="bg-gradient-to-b from-emerald-500 to-slate-600 w-[70%] max-w-screen border-none">
         <CardHeader className="flex justify-between items-center">
           <CardTitle>{title}</CardTitle>
-          <button onClick={onClose} className="text-red-500 font-bold text-lg">&times;</button>
         </CardHeader>
         <CardContent className="space-y-2">
             {content}
