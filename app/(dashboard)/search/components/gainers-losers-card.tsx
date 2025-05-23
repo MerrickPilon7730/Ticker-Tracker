@@ -24,7 +24,7 @@ export const GainersLosersCard = ({ title, stock, onClick}: StockProps) => {
   // TODO: make the card look professional
   return (
     <button onClick={onClick ?? undefined}>
-      <Card className={`${bgColor} border-none py-2`}>
+      <Card className={`${bgColor} border-none py-2 cursor-pointer`}>
         <CardHeader>
           <CardTitle>
             <div className="flex justify-between items-center">

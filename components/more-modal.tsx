@@ -18,7 +18,7 @@ export const MoreModal = ({ isOpen, onClose, title, content }: Props) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-start justify-center z-50 bg-black/60 -pt-20">
+    <div className="fixed inset-0 flex items-start justify-center z-50 bg-black/60">
       <Card className="bg-gradient-to-b from-emerald-500 to-slate-600 w-[70%] max-w-screen border-none">
         <CardHeader className="flex justify-between items-center">
           <CardTitle>{title}</CardTitle>
