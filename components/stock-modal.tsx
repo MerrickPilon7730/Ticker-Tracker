@@ -17,7 +17,7 @@ export const StockModal = ({ isOpen, onClose, stock }: Props) => {
   if (!isOpen || !stock) return null;
   // TODO: fix layout of modal, make it bigger, get more data from API
   return (
-    <div className="fixed w-full max-w-screen flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-start justify-center z-50 pt-[10%] bg-black/60">
       <Card className="bg-gradient-to-b from-emerald-500 to-slate-600 w-[70%] max-w-screen p-4 border-none">
         <CardHeader className="flex justify-between items-center">
           <CardTitle>{stock.ticker} Details</CardTitle>

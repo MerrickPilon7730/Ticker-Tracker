@@ -20,7 +20,7 @@ export default function SignUpPage() {
                 </ClerkLoading>
             </div>
             <div>
-
+                {/*TODO: Add */}
             </div>
         </div>
     )
