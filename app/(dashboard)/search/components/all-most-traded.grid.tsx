@@ -26,7 +26,7 @@ export const TopTradedGrid = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 w-full auto-rows-min">
+      <div className="grid grid-cols-4 gap-4 w-full auto-rows-min">
         {traded.map((stock) => (
           <GainersLosersCard
             key={stock.ticker}
