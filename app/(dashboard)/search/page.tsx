@@ -1,14 +1,19 @@
 "use client"
 
 import { useEffect, useState } from "react";
+
+import { getAllStocks, StockAPIResponse } from "@/features/search/get-all-stocks";
+
 import { ComponentCard } from "@/components/component-card";
 import { StockTable } from "./components/stock-table";
 import { columns } from "./components/stock-columns";
-import { getAllStocks, StockAPIResponse } from "@/features/search/get-all-stocks";
 import { Stock } from "./components/stock-columns";
-import { TopGainersGrid } from "./components/gainers-grid";
-import { TopLosersGrid } from "./components/losers-grid";
-import { TopTradedGrid } from "./components/most-traded-grid";
+import { TopFourGainersGrid } from "./components/top-four-gainers-grid";
+import { TopFourLosersGrid } from "./components/top-four-losers-grid";
+import { TopFourTradedGrid } from "./components/top-four-most-traded-grid";
+import { TopGainersGrid } from "./components/all-gainers-grid";
+import { TopLosersGrid } from "./components/all-losers-grid";
+import { TopTradedGrid } from "./components/all-most-traded.grid";
 
 export default function SearchPage() {
   const [stocks, setStocks] = useState<Stock[]>([]);
@@ -32,7 +37,8 @@ export default function SearchPage() {
           <div className="w-full max-w-[90%]">
                 <ComponentCard 
                   title="Top Gainers"
-                  content={<TopGainersGrid />}
+                  content={<TopFourGainersGrid />}
+                  moreContent={<TopGainersGrid />}
                 />
           </div>
         </div>
@@ -41,7 +47,8 @@ export default function SearchPage() {
             <ComponentCard 
               title="Top Losers" 
               bg="bg-gradient-to-b from-red-500 to-slate-600"
-              content={<TopLosersGrid />}
+              content={<TopFourLosersGrid />}
+              moreContent={<TopLosersGrid />}
             />
           </div>
         </div>
@@ -49,7 +56,8 @@ export default function SearchPage() {
           <div className="w-full max-w-[90%]">
             <ComponentCard 
               title="Most Traded"
-              content={<TopTradedGrid/>}
+              content={<TopFourTradedGrid/>}
+              moreContent={<TopTradedGrid />}
             />
           </div>
         </div>
