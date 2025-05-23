@@ -1,7 +1,7 @@
 
 import { Hono } from "hono";
 
-const API_KEY = process.env.FINNHUB_API_KEY;
+const API_KEY = process.env.TWELVE_DATA_API_KEY;
 
 const app = new Hono()
     .get("/get-stocks", async (c) => {
