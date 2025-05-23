@@ -5,7 +5,7 @@ import {
     CardHeader, 
     CardTitle 
 } from "@/components/ui/card";
-import { StockDataType } from "@/Schemas/stock-schema";
+import { StockDataType } from "@/Schemas/api-schema";
 
 type Props = {
   isOpen: boolean;

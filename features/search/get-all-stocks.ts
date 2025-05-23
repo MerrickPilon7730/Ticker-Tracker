@@ -1,5 +1,5 @@
 
-import { StockType } from "@/Schemas/stock-schema";
+import { StockType } from "@/Schemas/api-schema";
 
 export type StockAPIResponse = {
   data: StockType[];
