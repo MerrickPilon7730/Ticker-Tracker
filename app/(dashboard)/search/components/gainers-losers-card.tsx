@@ -46,6 +46,5 @@ export const GainersLosersCard = ({ title, stock, onClick}: StockProps) => {
         </CardContent>
       </Card>
     </button>
-   
   );
 };
