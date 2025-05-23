@@ -1,12 +1,8 @@
-type Stock = {
-    symbol: string,
-    name: string,
-    currency: string,
-    exchange: string,
-};
+
+import { StockType } from "@/Schemas/stock-schema";
 
 export type StockAPIResponse = {
-  data: Stock[];
+  data: StockType[];
   count: number;
   status: string;
 };
