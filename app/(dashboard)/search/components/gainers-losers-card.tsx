@@ -22,7 +22,7 @@ export const GainersLosersCard = ({ title, stock, onclick}: StockProps) => {
 
   const prefix = isGain ? "+" : "";
   const bgColor = (isGain ? "bg-emerald-500 hover:bg-emerald-400": "bg-red-500 hover:bg-red-400")
-
+  // TODO: make the card look professional
   return (
     <button onClick={onclick ?? undefined}>
       <Card className={`${bgColor} border-none py-2`}>
