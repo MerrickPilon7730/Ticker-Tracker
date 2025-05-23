@@ -1,9 +1,8 @@
-type Props = {
-    price: string,
-};
 
-export const getAllStocks = async (): Promise<Props[]> => {
-    const res = await fetch("http://localhost:3000/api/twelve-data/get-stocks");
+import { StockPriceType } from "@/Schemas/stock-schema";
+
+export const getStockPrice = async (symbol: string): Promise<StockPriceType> => {
+    const res = await fetch(`http://localhost:3000/api/twelve-data/stock-price/${symbol}`);
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");
