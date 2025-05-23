@@ -13,9 +13,10 @@ type Props = {
     bg?: string,
     content?: React.ReactNode,
     more?: React.ReactNode,
+    onClickMore?: () => void;
 }
 
-export const ComponentCard = ({title, bg, content, more}: Props) => {
+export const ComponentCard = ({title, bg, content, more, onClickMore}: Props) => {
     return(
         <Card className={`${bg ? bg : "bg-gradient-to-b from-emerald-500 to-slate-600"} border-none`}>
             <CardHeader>
@@ -29,9 +30,11 @@ export const ComponentCard = ({title, bg, content, more}: Props) => {
             {more ? (
                 more
                 ) : (
-                <div className="flex justify-end gap-2 mr-6">
-                    <p>More</p>
-                    <ArrowRightCircleIcon className="cursor-pointer"/>
+                <div className="flex justify-end">
+                    <div className={`cursor-pointer flex justify-end gap-2 mr-6 ${bg ? "hover:text-red-500" : "hover:text-emerald-500"}`} onClick={onClickMore}>
+                        <p>More</p>
+                        <ArrowRightCircleIcon />
+                    </div>
                 </div>
             )}
         </Card> 
