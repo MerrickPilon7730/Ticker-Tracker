@@ -32,6 +32,12 @@ export const TopFourGainersGrid = () => {
     setIsModalOpen(true);
   };
 
+  const handleClose = () => {
+    setIsModalOpen(false);
+    setSelectedStock(null);
+    setStockQuote(null);
+  }
+
   return (
      <>
       <div className="grid grid-cols-2 gap-4 w-full auto-rows-min">
@@ -46,7 +52,7 @@ export const TopFourGainersGrid = () => {
       </div>
       <StockModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleClose}
         stock={selectedStock}
         stockQuote={stockQuote}
       />

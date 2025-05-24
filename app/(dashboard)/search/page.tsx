@@ -32,7 +32,7 @@ export default function SearchPage() {
 
   return (
     <div>
-      <div className="grid grid-cols-3 mb-4">
+      <div className="grid grid-cols-3 mb-8">
         <div className="flex justify-center">
           <div className="w-full max-w-[90%]">
                 <ComponentCard 

@@ -27,12 +27,12 @@ export const TopFourLosersGrid = () => {
     }
   }, [selectedStock]);
 
-    const handleCardClick = (stock: StockDataType) => {
+  const handleCardClick = (stock: StockDataType) => {
     setSelectedStock(stock);
     setIsModalOpen(true);
   };
 
-    const handleClose = () => {
+  const handleClose = () => {
     setIsModalOpen(false);
     setSelectedStock(null);
     setStockQuote(null);
