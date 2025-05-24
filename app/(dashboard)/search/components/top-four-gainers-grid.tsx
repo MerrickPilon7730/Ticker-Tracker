@@ -3,21 +3,29 @@
 import { useEffect, useState } from "react";
 
 import { getTopFourGainers } from "@/features/search/get-top-gainers-losers";
+import { getStockQuote } from "@/features/search/get-stock-quote";
 
 import { StockModal } from "@/components/stock-modal";
 
 import { GainersLosersCard } from "./gainers-losers-card";
 
-import { StockDataType } from "@/Schemas/api-schema";
+import { StockDataType, StockQuoteType } from "@/Schemas/api-schema";
 
 export const TopFourGainersGrid = () => {
   const [gainers, setGainers] = useState<StockDataType[]>([]);
   const [selectedStock, setSelectedStock] = useState<StockDataType | null>(null);
+  const [stockQuote, setStockQuote] = useState<StockQuoteType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getTopFourGainers().then(setGainers);
   }, []);
+
+  useEffect(() => {
+    if(selectedStock){
+      getStockQuote(selectedStock.ticker).then(setStockQuote);
+    }
+  }, [selectedStock]);
 
   const handleCardClick = (stock: StockDataType) => {
     setSelectedStock(stock);
@@ -40,6 +48,7 @@ export const TopFourGainersGrid = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         stock={selectedStock}
+        stockQuote={stockQuote}
       />
     </>
   );

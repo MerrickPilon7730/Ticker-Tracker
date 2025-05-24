@@ -41,7 +41,7 @@ export const StockModal = ({ isOpen, onClose, stock, stockQuote }: Props) => {
               <strong>Change %:</strong> {stock.change_percentage}
             </p>
             <p>
-              {stockQuote?.exchange}
+              {stockQuote?.name}
             </p>
           </CardContent>
         </Card>
