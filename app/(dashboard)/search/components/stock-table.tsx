@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   ColumnDef,
@@ -12,6 +12,8 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+
+import { getStockQuote } from "@/features/search/get-stock-quote";
 
 import {
   Table,
@@ -25,7 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { StockModal } from "@/components/stock-modal";
 
-import { StockDataType } from "@/Schemas/api-schema";
+import { StockType, StockQuoteType} from "@/Schemas/api-schema";
 
 interface StockTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -40,19 +42,32 @@ function globalFilterFn(row: { original: any }, columnId: string, filterValue: s
   return symbol.includes(value) || name.includes(value);
 }
 
-export function StockTable<TData, TValue>({
+export function StockTable<TData extends StockType, TValue>({
   columns,
   data,
 }: StockTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [selectedStock, setSelectedStock] = useState<TData | null>(null);
+  const [stockQuote, setStockQuote] = useState<StockQuoteType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleRowClick = (stock: TData) => {
     setSelectedStock(stock);
     setIsModalOpen(true);
   };
+
+    useEffect(() => {
+      if (selectedStock){
+        getStockQuote(selectedStock.symbol).then(setStockQuote);
+      }
+    }, [selectedStock]);
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+    setSelectedStock(null);
+    setStockQuote(null);
+  }
 
   const table = useReactTable({
     data,
@@ -148,8 +163,9 @@ export function StockTable<TData, TValue>({
       </div>
       <StockModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        stock={selectedStock as StockDataType}
+        onClose={handleClose}
+        allStock={selectedStock as StockType}
+        stockQuote={stockQuote}
       />
     </div>
   );
