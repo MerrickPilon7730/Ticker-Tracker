@@ -1,7 +1,11 @@
 
 
-import { StockDataType } from "@/Schemas/api-schema";
-import { GainersLosersDataType, GainersLosersData } from "@/Schemas/api-schema";
+import { 
+    StockDataType, 
+    GainersLosersDataType, 
+    GainersLosersData,
+} from "@/Schemas/api-schema";
+
 
 let cachedData: GainersLosersDataType | null = null;
 let lastFetchTime = 0;

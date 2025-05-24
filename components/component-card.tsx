@@ -1,7 +1,13 @@
+import { useState } from "react";
+
 import { ArrowRightCircleIcon } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle 
+} from "@/components/ui/card";
 
 type Props = {
   title: string;
