@@ -34,25 +34,28 @@ export const StockModal = ({
       className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center"
       onClick={onClose}
     >
-      <div className="w-[90%] max-w-4xl" onClick={onClose}>
+      <div className="w-[90%] max-w-4xl"  onClick={(e) => e.stopPropagation()}>
         <Card className="bg-gradient-to-b from-emerald-500 to-slate-600 p-4 border-none">
-          <CardHeader className="flex justify-between items-center">
-            <CardTitle>
-              {(stock?.ticker || allStock?.symbol) ?? "Stock"} Details
+          <CardHeader className="flex justify-center items-center">
+            <CardTitle className="text-2xl flex items-center">
+              {(stock?.ticker || allStock?.symbol) ?? "Stock"} - {stockQuote?.name}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 max-h-[70vh] overflow-y-auto">
             {stock ? (
-              <>
+              <div>
                 <p><strong>Price:</strong> ${Number(stock.price).toFixed(2)}</p>
                 <p><strong>Change:</strong> ${Number(stock.change_amount).toFixed(2)}</p>
                 <p><strong>Change %:</strong> {stock.change_percentage}</p>
-                <p><strong>Company:</strong> {stockQuote?.name}</p>
-              </>
+                <p><strong>High:</strong> ${Number(stockQuote?.high).toFixed(2)}</p>
+                <p><strong>Low:</strong> ${Number(stockQuote?.low).toFixed(2)}</p>
+                <p><strong>Previous Close:</strong> ${Number(stockQuote?.previous_close).toFixed(2)}</p>
+              </div>
             ) : allStock ? (
-              <>
-                <p><strong>Company:</strong> {stockQuote?.name}</p>
-              </>
+              <div>
+                <p><strong>Currency:</strong> {stockQuote?.currency}</p>
+                <p><strong>High:</strong> ${Number(stockQuote?.high).toFixed(2)}</p>
+              </div>
             ) : (
               <p>No data available.</p>
             )}
