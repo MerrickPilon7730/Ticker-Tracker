@@ -13,7 +13,6 @@ type Props = {
   title: string;
   bg?: string;
   content?: React.ReactNode;
-  more?: React.ReactNode;
   moreContent?: React.ReactNode;
 };
 
@@ -21,10 +20,11 @@ export const ComponentCard = ({
   title,
   bg,
   content,
-  more,
   moreContent,
 }: Props) => {
   const [showModal, setShowModal] = useState(false);
+
+  const showMoreLink = moreContent;
 
   return (
     <>
@@ -41,9 +41,7 @@ export const ComponentCard = ({
         <CardContent className="flex items-center justify-center">
           {content}
         </CardContent>
-        {more ? (
-          more
-        ) : (
+        {showMoreLink && (
           <div className="flex justify-end">
             <div
               className={`cursor-pointer flex justify-end gap-2 mr-6 ${ bg ? "hover:text-red-500" : "hover:text-emerald-500"}`}
