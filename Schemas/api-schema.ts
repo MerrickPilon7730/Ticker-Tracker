@@ -21,6 +21,7 @@ export const StockData = z.object({
   price: z.string(),
   change_amount: z.string(),
   change_percentage: z.string(),
+  volume: z.string(),
 });
 
 export type StockDataType = z.infer<typeof StockData>;
@@ -55,6 +56,7 @@ export const StockQuote = z.object({
   currency: z.string(),
   datetime: z.string(),
   timestamp: z.number(),
+  last_quote_at: z.number(),
   open: z.string(),
   high: z.string(),
   low: z.string(),
@@ -64,16 +66,8 @@ export const StockQuote = z.object({
   change: z.string(),
   percent_change: z.string(),
   average_volume: z.string(),
-  rolling_1d_change: z.string(),
-  rolling_7d_change: z.string(),
-  rolling_period_change: z.string(),
   is_market_open: z.boolean(),
   fifty_two_week: FiftyTwoWeek,
-  extended_change: z.string(),
-  extended_percent_change: z.string(),
-  extended_price: z.string(),
-  extended_timestamp: z.number(),
-  last_quote_at: z.number(),
 });
 
 export type StockQuoteType = z.infer<typeof StockQuote>;
