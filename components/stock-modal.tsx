@@ -9,7 +9,7 @@ import {
   StockDataType, 
   StockQuoteType, 
   StockType 
-} from "@/Schemas/api-schema";
+} from "@/Schemas/api-schemas";
 
 type Props = {
   isOpen: boolean;

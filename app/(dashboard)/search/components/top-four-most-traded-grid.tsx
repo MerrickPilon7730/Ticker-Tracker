@@ -9,7 +9,7 @@ import { StockModal } from "@/components/stock-modal";
 
 import { GainersLosersCard } from "./gainers-losers-card";
 
-import { StockDataType, StockQuoteType } from "@/Schemas/api-schema";
+import { StockDataType, StockQuoteType } from "@/Schemas/api-schemas";
 
 export const TopFourTradedGrid = () => {
   const [traded, setTraded] = useState<StockDataType[]>([]);

@@ -8,7 +8,7 @@ import { StockModal } from "@/components/stock-modal";
 
 import { GainersLosersCard } from "./gainers-losers-card";
 
-import { StockDataType } from "@/Schemas/api-schema";
+import { StockDataType } from "@/Schemas/api-schemas";
 
 export const TopTradedGrid = () => {
   const [traded, setTraded] = useState<StockDataType[]>([]);

@@ -1,5 +1,5 @@
 
-import { StockPriceType } from "@/Schemas/api-schema";
+import { StockPriceType } from "@/Schemas/api-schemas";
 
 export const getStockPrice = async (symbol: string): Promise<StockPriceType> => {
     const response = await fetch(`http://localhost:3000/api/twelve-data/stock-price/${symbol}`);

@@ -1,6 +1,6 @@
 
 
-import { StockDataType } from "@/Schemas/api-schema";
+import { StockDataType } from "@/Schemas/api-schemas";
 
 import { 
     Card,

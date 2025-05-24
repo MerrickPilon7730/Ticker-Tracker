@@ -4,7 +4,7 @@ import {
     StockDataType, 
     GainersLosersDataType, 
     GainersLosersData,
-} from "@/Schemas/api-schema";
+} from "@/Schemas/api-schemas";
 
 
 let cachedData: GainersLosersDataType | null = null;
