@@ -12,10 +12,12 @@ export const columns: ColumnDef<Stock>[] = [
     {
         accessorKey: "symbol",
         header: "Ticker",
+        enableGlobalFilter: true,
     },
     {
         accessorKey: "name",
         header: "Company Name",
+        enableGlobalFilter: true,
     },
     {
         accessorKey: "exchange",

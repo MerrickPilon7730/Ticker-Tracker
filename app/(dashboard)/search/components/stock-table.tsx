@@ -1,10 +1,9 @@
 "use client";
 
-import * as React from "react";
+import { useState } from "react";
 
 import {
   ColumnDef,
-  ColumnFiltersState,
   SortingState,
   flexRender,
   getCoreRowModel,
@@ -24,34 +23,52 @@ import {
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { StockModal } from "@/components/stock-modal";
+
+import { StockDataType } from "@/Schemas/api-schema";
 
 interface StockTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
-  filterKey: string;
   data: TData[];
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function globalFilterFn(row: { original: any }, columnId: string, filterValue: string) {
+  const value = filterValue.toLowerCase();
+  const symbol = row.original.symbol?.toLowerCase() ?? "";
+  const name = row.original.name?.toLowerCase() ?? "";
+  return symbol.includes(value) || name.includes(value);
 }
 
 export function StockTable<TData, TValue>({
   columns,
-  filterKey,
   data,
 }: StockTableProps<TData, TValue>) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const [globalFilter, setGlobalFilter] = useState("");
+  const [selectedStock, setSelectedStock] = useState<TData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleRowClick = (stock: TData) => {
+    setSelectedStock(stock);
+    setIsModalOpen(true);
+  };
 
   const table = useReactTable({
     data,
     columns,
     state: {
       sorting,
-      columnFilters,
+      globalFilter,
     },
+    onGlobalFilterChange: setGlobalFilter,
     onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    globalFilterFn,
+    filterFromLeafRows: true,
     initialState: {
         pagination: {
             pageSize: 25,
@@ -65,11 +82,9 @@ export function StockTable<TData, TValue>({
       <div className="w-[90%]">
         <div className="flex items-center py-4">
           <Input
-            placeholder={`Filter ${filterKey}...`}
-            value={table.getColumn(filterKey)?.getFilterValue() as string ?? ""}
-            onChange={(event) =>
-              table.getColumn(filterKey)?.setFilterValue(event.target.value)
-            }
+            placeholder={`Search by ticker or company name...`}
+            value={globalFilter}
+            onChange={(event) => setGlobalFilter(event.target.value)}
             className="max-w-sm"
           />
         </div>
@@ -94,7 +109,11 @@ export function StockTable<TData, TValue>({
             </TableHeader>
             <TableBody>
               {table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
+                <TableRow 
+                  key={row.id} 
+                  className="hover:bg-emerald-400 cursor-pointer"
+                  onClick={() => handleRowClick(row.original)}
+                  >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -112,6 +131,7 @@ export function StockTable<TData, TValue>({
             size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
+            className="cursor-pointer hover:bg-emerald-400"
           >
             Previous
           </Button>
@@ -120,11 +140,17 @@ export function StockTable<TData, TValue>({
             size="sm"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
+            className="cursor-pointer hover:bg-emerald-400"
           >
             Next
           </Button>
         </div>
       </div>
+      <StockModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        stock={selectedStock as StockDataType}
+      />
     </div>
   );
 }

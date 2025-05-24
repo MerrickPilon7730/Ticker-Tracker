@@ -69,7 +69,6 @@ export default function SearchPage() {
             content={
               <StockTable 
                 columns={columns} 
-                filterKey="name" 
                 data={stocks} 
               />
             }
