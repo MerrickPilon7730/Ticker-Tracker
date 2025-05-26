@@ -2,13 +2,9 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-export type Stock = {
-    symbol: string,
-    name: string,
-    exchange: string,
-};
+import { StockType } from "@/Schemas/api-schemas";
 
-export const columns: ColumnDef<Stock>[] = [
+export const columns: ColumnDef<StockType>[] = [
     {
         accessorKey: "symbol",
         header: "Ticker",
@@ -18,6 +14,10 @@ export const columns: ColumnDef<Stock>[] = [
         accessorKey: "name",
         header: "Company Name",
         enableGlobalFilter: true,
+    },
+    { 
+        accessorKey: "currency",
+        header: "Currency",
     },
     {
         accessorKey: "exchange",
