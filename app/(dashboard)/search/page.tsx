@@ -7,16 +7,17 @@ import { getAllStocks, StockAPIResponse } from "@/features/search/get-all-stocks
 import { ComponentCard } from "@/components/component-card";
 import { StockTable } from "./components/stock-table";
 import { columns } from "./components/stock-columns";
-import { Stock } from "./components/stock-columns";
-import { TopFourGainersGrid } from "./components/top-four-gainers-grid";
-import { TopFourLosersGrid } from "./components/top-four-losers-grid";
-import { TopFourTradedGrid } from "./components/top-four-most-traded-grid";
-import { TopGainersGrid } from "./components/all-gainers-grid";
-import { TopLosersGrid } from "./components/all-losers-grid";
-import { TopTradedGrid } from "./components/all-most-traded.grid";
+import { TopFourGainersGrid } from "./components/gainers-losers/top-four-gainers-grid";
+import { TopFourLosersGrid } from "./components/gainers-losers/top-four-losers-grid";
+import { TopFourTradedGrid } from "./components/gainers-losers/top-four-most-traded-grid";
+import { TopGainersGrid } from "./components/gainers-losers/all-gainers-grid";
+import { TopLosersGrid } from "./components/gainers-losers/all-losers-grid";
+import { TopTradedGrid } from "./components/gainers-losers/all-most-traded.grid";
+
+import { StockType } from "@/Schemas/api-schemas";
 
 export default function SearchPage() {
-  const [stocks, setStocks] = useState<Stock[]>([]);
+  const [stocks, setStocks] = useState<StockType[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ export default function SearchPage() {
           <ComponentCard
             title="Search"
             content={
-              <StockTable 
+              <StockTable
                 columns={columns} 
                 data={stocks} 
               />
