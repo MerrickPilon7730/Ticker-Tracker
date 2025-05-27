@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.817.0",
+    "@aws-sdk/lib-dynamodb": "^3.817.0",
     "@clerk/nextjs": "^6.19.2",
     "@radix-ui/react-slot": "^1.2.2",
     "@tanstack/react-table": "^8.21.3",
