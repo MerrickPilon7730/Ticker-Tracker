@@ -7,6 +7,7 @@ export const ownedStocks = z.object({
 });
 
 export const ownedStocksSchema = z.record(z.string(), z.array(ownedStocks));
+export type ownedStocksType = z.infer<typeof ownedStocksSchema>;
 
 export const userData = z.object({
     userId: z.string(),
