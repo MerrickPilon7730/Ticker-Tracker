@@ -1,4 +1,5 @@
 
+
 import { z } from "zod";
 
 export const ownedStocks = z.object({
@@ -9,10 +10,14 @@ export const ownedStocks = z.object({
 export const ownedStocksSchema = z.record(z.string(), z.array(ownedStocks));
 export type ownedStocksType = z.infer<typeof ownedStocksSchema>;
 
+export const watchList = z.array(z.string())
+export type watchListType = z.infer<typeof watchList>;
+
 export const userData = z.object({
     userId: z.string(),
     email: z.string(),
     password: z.string(),
-    watchList: z.array(z.string()),
+    watchList: watchList,
     owned: ownedStocksSchema,
 });
+
