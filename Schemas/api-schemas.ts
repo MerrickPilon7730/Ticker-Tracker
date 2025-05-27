@@ -10,6 +10,14 @@ export const Stock = z.object({
 
 export type StockType = z.infer<typeof Stock>;
 
+export const StockAPIResponseSchema = z.object({
+  data: z.array(Stock),
+  count: z.number(),
+  status: z.string(),
+});
+
+export type StockAPIResponse = z.infer<typeof StockAPIResponseSchema>;
+
 export const StockPrice = z.object({
   price: z.string(),
 });
