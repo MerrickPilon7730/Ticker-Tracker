@@ -5,9 +5,7 @@ import { unmarshall } from "@aws-sdk/util-dynamodb";
 
 export const runtime = "nodejs";
 
-
-
-const app = new Hono();
+const app = new Hono().basePath("/api/dynamodb");
 
 const client = new DynamoDBClient({
     region: process.env.AWS_REGION!,
