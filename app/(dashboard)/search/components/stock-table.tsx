@@ -13,7 +13,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { getStockQuote } from "@/features/search/get-stock-quote";
+import { getStockQuote } from "@/features/search/api/get-stock-quote";
 
 import {
   Table,

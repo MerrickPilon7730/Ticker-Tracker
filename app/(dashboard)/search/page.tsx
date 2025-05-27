@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { getAllStocks, StockAPIResponse } from "@/features/search/get-all-stocks";
+import { getAllStocks, StockAPIResponse } from "@/features/search/api/get-all-stocks";
 
 import { ComponentCard } from "@/components/component-card";
 import { StockTable } from "./components/stock-table";

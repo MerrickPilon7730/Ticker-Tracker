@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { getAllGainers } from "@/features/search/get-top-gainers-losers";
-import { getStockQuote } from "@/features/search/get-stock-quote";
+import { getAllGainers } from "@/features/search/api/get-top-gainers-losers";
+import { getStockQuote } from "@/features/search/api/get-stock-quote";
 
 import { StockModal } from "@/components/stock-modal";
 
