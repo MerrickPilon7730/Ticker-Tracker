@@ -21,11 +21,17 @@ export const getTopGainersLosers = async (): Promise<GainersLosersDataType> => {
         throw new Error("Failed to fetch data");
     }
 
-    const json = await response.json();
-    const data = GainersLosersData.parse(json);
+    const data = await response.json();
+
+    const parsedData = GainersLosersData.parse(data);
+
+    if (!parsedData.success) {
+      throw new Error("Invalid response format for gainers/losers")
+    }
     */
   const data = GainersLosersData.parse(mockApiResponse); // Mock data to save api requests
 
+  // TODO: change data.top_gainers to parsedData.top_gainers etc. when not using mockApiResponse 
   const topGainers = data.top_gainers.map((stock) => ({
     ...stock,
     ticker: stock.ticker.replace(/\+/g, ""),

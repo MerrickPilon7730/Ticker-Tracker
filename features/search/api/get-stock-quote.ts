@@ -1,5 +1,5 @@
 
-import { StockQuoteType } from "@/Schemas/api-schemas";
+import { StockQuoteType, StockQuote } from "@/Schemas/api-schemas";
 
 export const getStockQuote = async (symbol: string): Promise<StockQuoteType> => {
     const response = await fetch(`http://localhost:3000/api/twelve-data/stock-quote/${symbol}`);
@@ -8,5 +8,13 @@ export const getStockQuote = async (symbol: string): Promise<StockQuoteType> => 
         throw new Error("Failed to fetch data");
     };
 
-    return response.json();
+    const data = await response.json();
+
+    const parsedData = StockQuote.safeParse(data);
+
+    if (!parsedData.success) {
+        throw new Error("Invalid response format for stock quote");
+    }
+
+    return parsedData.data;
 }

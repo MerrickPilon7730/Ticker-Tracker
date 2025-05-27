@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { getAllStocks, StockAPIResponse } from "@/features/search/api/get-all-stocks";
+import { getAllStocks } from "@/features/search/api/get-all-stocks";
 
 import { ComponentCard } from "@/components/component-card";
 import { StockTable } from "./components/stock-table";
@@ -14,7 +14,7 @@ import { TopGainersGrid } from "./components/gainers-losers/all-gainers-grid";
 import { TopLosersGrid } from "./components/gainers-losers/all-losers-grid";
 import { TopTradedGrid } from "./components/gainers-losers/all-most-traded.grid";
 
-import { StockType } from "@/Schemas/api-schemas";
+import { StockType, StockAPIResponse } from "@/Schemas/api-schemas";
 
 export default function SearchPage() {
   const [stocks, setStocks] = useState<StockType[]>([]);
