@@ -59,9 +59,9 @@ const app = new Hono().basePath("/api/dynamodb")
             }
 
             const item = unmarshall(result.Item);
-            const watchlist = item.watchlist ?? {};
+            const watchList = item.watchList ?? {};
 
-            return c.json({ watchlist });
+            return c.json({ watchList });
         } catch {
             return c.json({error: "Failed to fetch data"}, 500);
         }
