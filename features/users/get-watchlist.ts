@@ -1,8 +1,10 @@
 
 import { watchList, watchListType } from "@/Schemas/user-schema";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
 export const getUserWatchList = async (userId: string): Promise<watchListType> => {
-  const response = await fetch(`http://localhost:3000/api/dynamodb/users/${userId}/watchlist`);
+  const response = await fetch(`${BASE_URL}/api/dynamodb/users/${userId}/watchlist`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch user owned stocks");
