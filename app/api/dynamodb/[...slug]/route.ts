@@ -8,10 +8,10 @@ export const runtime = "nodejs";
 
 
 const client = new DynamoDBClient({
-    region: process.env.AWS_REGION!,
+    region: process.env.REGION!,
     credentials: {
-        accessKeyId: process.env.AWS_DYNAMODB_KEY!,
-        secretAccessKey: process.env.AWS_DYNAMODB_SECRET_KEY!,
+        accessKeyId: process.env.DYNAMODB_KEY!,
+        secretAccessKey: process.env.DYNAMODB_SECRET_KEY!,
     },
 });
 
