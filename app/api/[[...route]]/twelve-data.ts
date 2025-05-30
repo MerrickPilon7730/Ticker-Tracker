@@ -4,7 +4,7 @@ import { Hono } from "hono";
 const API_KEY = process.env.TWELVE_DATA_API_KEY;
 
 const app = new Hono()
-    .get("/get-stocks", async (c) => {
+    .get("/stocks", async (c) => {
         const response = await fetch(`https://api.twelvedata.com/stocks?country=US&apikey=${API_KEY}&type=Common Stock`);
 
         if(!response.ok){
@@ -15,7 +15,7 @@ const app = new Hono()
 
         return c.json(data);
     })
-    .get("/stock-price/:symbol", async (c) =>{
+    .get("/stocks/:symbol/price", async (c) =>{
         const symbol = c.req.param("symbol");
         const response = await fetch(`https://api.twelvedata.com/price?country=US&symbol=${symbol}&apikey=${API_KEY}`);
 
@@ -27,7 +27,7 @@ const app = new Hono()
 
         return c.json(data);
     })
-    .get("/stock-quote/:symbol", async (c) =>{
+    .get("/stocks/:symbol/quote", async (c) =>{
         const symbol = c.req.param("symbol");
         const response = await fetch(`https://api.twelvedata.com/quote?country=US&symbol=${symbol}&apikey=${API_KEY}`);
 
