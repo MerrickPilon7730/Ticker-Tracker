@@ -10,7 +10,7 @@ export const runtime = "edge"
 const app = new Hono().basePath("/api")
 
 app.use("*", async (c, next) => {
-  c.header("Access-Control-Allow-Origin", "https://ticker-tracker-steel.vercel.app/");
+  c.header("Access-Control-Allow-Origin", "https://ticker-tracker-steel.vercel.app");
   c.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   c.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
