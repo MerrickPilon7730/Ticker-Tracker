@@ -16,7 +16,7 @@ const client = new DynamoDBClient({
 });
 
 const app = new Hono().basePath("/api/dynamodb")
-    .get("/owned/:userId", async (c) => {
+    .get("/users/:userId/owned", async (c) => {
         const userId = c.req.param("userId");
 
         const command = new GetItemCommand({
@@ -41,7 +41,7 @@ const app = new Hono().basePath("/api/dynamodb")
             return c.json({error: "Failed to fetch data"}, 500)
         }
     })
-    .get("/watchlist/:userId", async (c) => {
+    .get("/users/:userId/watchlist", async (c) => {
         const userId = c.req.param("userId");
 
         const command = new GetItemCommand({
