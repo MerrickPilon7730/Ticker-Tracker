@@ -1,7 +1,7 @@
 
 import { StockQuoteType, StockQuote } from "@/Schemas/api-schemas";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://ticker-tracker-steel.vercel.app/" || "http://localhost:3000";
 
 export const getStockQuote = async (symbol: string): Promise<StockQuoteType> => {
     const response = await fetch(`${BASE_URL}/api/twelve-data/stocks/${symbol}/quote`);

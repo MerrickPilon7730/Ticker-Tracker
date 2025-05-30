@@ -1,7 +1,7 @@
 
 import { watchList, watchListType } from "@/Schemas/user-schema";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://ticker-tracker-steel.vercel.app/" || "http://localhost:3000";
 
 export const getUserWatchList = async (userId: string): Promise<watchListType> => {
   const response = await fetch(`${BASE_URL}/api/dynamodb/users/${userId}/watchlist`);
