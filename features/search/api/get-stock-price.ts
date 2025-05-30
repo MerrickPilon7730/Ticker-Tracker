@@ -1,7 +1,8 @@
 
 import { StockPriceType, StockPrice } from "@/Schemas/api-schemas";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://ticker-tracker-steel.vercel.app/" || "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://ticker-tracker-steel.vercel.app" || "http://localhost:3000";
+
 
 export const getStockPrice = async (symbol: string): Promise<StockPriceType> => {
     const response = await fetch(`${BASE_URL}/api/twelve-data/stocks/${symbol}/price`);

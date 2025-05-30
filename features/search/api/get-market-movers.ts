@@ -8,7 +8,7 @@ let cachedData: GainersLosersDataType | null = null;
 let lastFetchTime = 0;
 const CACHE_DURATION = 1000 * 120;
 
-//const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://ticker-tracker-steel.vercel.app/" || "http://localhost:3000";
+//const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://ticker-tracker-steel.vercel.app" || "http://localhost:3000";
 
 export const getTopGainersLosers = async (): Promise<GainersLosersDataType> => {
   const now = Date.now();
