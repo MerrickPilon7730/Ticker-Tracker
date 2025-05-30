@@ -37,8 +37,12 @@ const app = new Hono().basePath("/api/dynamodb")
             const owned = item.owned ?? {};
 
             return c.json({ owned });
-        } catch {
-            return c.json({error: "Failed to fetch data"}, 500)
+        } catch (err) {
+            console.log("DYNAMODB_KEY present?", !!process.env.DYNAMODB_KEY);
+            console.log("DYNAMODB_SECRET_KEY present?", !!process.env.DYNAMODB_SECRET_KEY);
+
+            console.error("DynamoDB Error: ", err);
+            return c.json({error: "Failed to fetch data" }, 500);
         }
     })
     .get("/users/:userId/watchlist", async (c) => {
