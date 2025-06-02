@@ -1,9 +1,9 @@
 
-import { watchList, watchListType } from "@/Schemas/user-schema";
+import { WatchList, WatchListType } from "@/Schemas/user-schema";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const getUserWatchList = async (userId: string): Promise<watchListType> => {
+export const getUserWatchList = async (userId: string): Promise<WatchListType> => {
   const response = await fetch(`${BASE_URL}/api/dynamodb/users/${userId}/watchlist`);
 
   if (!response.ok) {
@@ -12,7 +12,7 @@ export const getUserWatchList = async (userId: string): Promise<watchListType> =
 
   const data = await response.json();
 
-  const parsedData = watchList.safeParse(data.watchList);
+  const parsedData = WatchList.safeParse(data.watchList);
 
   if (!parsedData.success) {
     throw new Error("Invalid response format");

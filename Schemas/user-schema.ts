@@ -2,22 +2,29 @@
 
 import { z } from "zod";
 
-export const ownedStocks = z.object({
+export const OwnedStocks = z.object({
     quantity: z.number().int().nonnegative(),
     price: z.number().nonnegative(),
 });
 
-export const ownedStocksSchema = z.record(z.string(), z.array(ownedStocks));
-export type ownedStocksType = z.infer<typeof ownedStocksSchema>;
+export const OwnedStocksSchema = z.record(z.string(), z.array(OwnedStocks));
+export type OwnedStocksType = z.infer<typeof OwnedStocksSchema>;
 
-export const watchList = z.array(z.string())
-export type watchListType = z.infer<typeof watchList>;
+export const WatchList = z.array(z.string())
+export type WatchListType = z.infer<typeof WatchList>;
 
-export const userData = z.object({
+export const UserInfo = z.object({
     userId: z.string(),
+    name: z.string(),
     email: z.string(),
-    password: z.string(),
-    watchList: watchList,
-    owned: ownedStocksSchema,
 });
 
+export type UserInfoType = z.infer<typeof UserInfo>;
+
+export const UserData = z.object({
+    userInfo: UserInfo,
+    watchList: WatchList,
+    owned: OwnedStocksSchema,
+});
+
+export type userDataType = z.infer<typeof UserData>;
