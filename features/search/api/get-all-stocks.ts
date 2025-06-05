@@ -1,10 +1,9 @@
 
 import { StockAPIResponse, StockAPIResponseSchema } from "@/Schemas/api-schemas";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const getAllStocks = async (): Promise<StockAPIResponse> => {
-    const response = await fetch(`${BASE_URL}/api/twelve-data/stocks`);
+    const response = await fetch(`/api/twelve-data/stocks`);
 
     if (!response.ok) {
         throw new Error("Failed to fetch data");
