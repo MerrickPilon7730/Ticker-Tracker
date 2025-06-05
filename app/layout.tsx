@@ -18,13 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
  return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-      <html>
-        <body className="bg-slate-600 text-white">
+    <html lang="en">
+      <body className="bg-slate-600 text-white">
+        <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
           <NavbarWrapper />
           {children}
-        </body>
-      </html>
-    </ClerkProvider>
-  )
+        </ClerkProvider>
+      </body>
+    </html>
+  );
 }
