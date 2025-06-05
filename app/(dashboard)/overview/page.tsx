@@ -1,13 +1,26 @@
 
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { createClerkClient, type User } from "@clerk/backend"
+import { auth } from "@clerk/nextjs/server";
 
 export default async function OverviewPage() {
+    const clerk = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY! });
+
     const { userId } = await auth();
-    const user = await currentUser();
+
+    if (!userId) {
+        return {
+            redirect: {
+                destination: "/sign-in",
+                permanent: false,
+            },
+        };
+    }
+
+    const user: User = await clerk.users.getUser(userId);
 
     return (
         <div>
-            Welcome, {user?.firstName}, {userId}
+            Welcome, {user?.firstName}
         </div>
     );
 };
