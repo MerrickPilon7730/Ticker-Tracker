@@ -8,8 +8,6 @@ let cachedData: GainersLosersDataType | null = null;
 let lastFetchTime = 0;
 const CACHE_DURATION = 1000 * 120;
 
-//const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 export const getTopGainersLosers = async (): Promise<GainersLosersDataType> => {
   const now = Date.now();
 
@@ -17,7 +15,7 @@ export const getTopGainersLosers = async (): Promise<GainersLosersDataType> => {
     return cachedData;
   }
 
-  /*const response = await fetch(`${BASE_URL}/api/alpha-vantage/stocks/market-movers`);
+  /*const response = await fetch(`/api/alpha-vantage/stocks/market-movers`);
 
     if (!response.ok) {
         throw new Error("Failed to fetch data");

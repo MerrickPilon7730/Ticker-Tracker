@@ -1,10 +1,8 @@
 
 import { StockQuoteType, StockQuote } from "@/Schemas/api-schemas";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 export const getStockQuote = async (symbol: string): Promise<StockQuoteType> => {
-    const response = await fetch(`${BASE_URL}/api/twelve-data/stocks/${symbol}/quote`);
+    const response = await fetch(`/api/twelve-data/stocks/${symbol}/quote`);
 
     if(!response.ok){
         throw new Error("Failed to fetch data");

@@ -1,11 +1,8 @@
 
 import { StockPriceType, StockPrice } from "@/Schemas/api-schemas";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
-
 export const getStockPrice = async (symbol: string): Promise<StockPriceType> => {
-    const response = await fetch(`${BASE_URL}/api/twelve-data/stocks/${symbol}/price`);
+    const response = await fetch(`/api/twelve-data/stocks/${symbol}/price`);
 
     if (!response.ok) {
         throw new Error("Failed to fetch data");

@@ -1,4 +1,4 @@
-// components/navbar/navbar-shell.tsx
+
 import { Logo } from "@/components/navbar/components/navbar-logo";
 
 export const NavbarShell = ({ children }: { children: React.ReactNode }) => {
