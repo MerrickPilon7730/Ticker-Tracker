@@ -68,30 +68,5 @@ const app = new Hono().basePath("/api/dynamodb")
             return c.json({error: "Failed to fetch data"}, 500);
         }
     })
-    .get("/users/:userId/info", async (c) => {
-        const userId = c.req.param("userId");
-
-        const command = new GetItemCommand({
-            TableName: "TickerTrackerUsers",
-            Key: {
-                userId: { S: userId},
-            },
-        });
-
-        try {
-            const result = await client.send(command);
-
-            if (!result.Item) {
-                return c.json({error: "User not found"}, 404);
-            }
-
-            const item = unmarshall(result.Item);
-            const userInfo = item.userInfo ?? {};
-
-            return c.json({userInfo});
-        } catch {
-            return c.json({error: "Failed to fetch data"}, 500);
-        };
-    })
 
 export const GET = app.fetch;
