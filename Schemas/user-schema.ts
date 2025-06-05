@@ -13,16 +13,8 @@ export type OwnedStocksType = z.infer<typeof OwnedStocksSchema>;
 export const WatchList = z.array(z.string())
 export type WatchListType = z.infer<typeof WatchList>;
 
-export const UserInfo = z.object({
-    userId: z.string(),
-    name: z.string(),
-    email: z.string(),
-});
-
-export type UserInfoType = z.infer<typeof UserInfo>;
-
 export const UserData = z.object({
-    userInfo: UserInfo,
+    userId: z.string(),
     watchList: WatchList,
     owned: OwnedStocksSchema,
 });
