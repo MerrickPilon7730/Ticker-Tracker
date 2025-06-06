@@ -85,3 +85,29 @@ export const StockQuote = z.object({
 });
 
 export type StockQuoteType = z.infer<typeof StockQuote>;
+
+//Daily time series for the year from Alpha Vantage
+export const DailyTimeSeries = z.object({
+  "1. open": z.string(),
+  "2. high": z.string(),
+  "3. low": z.string(),
+  "4. close": z.string(),
+  "5. volume": z.string(),
+});
+
+export const TimeSeriesDailySchema = z.record(DailyTimeSeries);
+export type TimeSeriesDailyType = z.infer<typeof TimeSeriesDailySchema>;
+
+export const MetaDataSchema = z.object({
+  "1. Information": z.string(),
+  "2. Symbol": z.string(),
+  "3. Last Refreshed": z.string(),
+  "4. Output Size": z.string(),
+  "5. Time Zone": z.string(),
+});
+
+export const DailyTimeSeriesAPISchema = z.object({
+  "Meta Data": MetaDataSchema,
+  "Time Series (Daily)": TimeSeriesDailySchema,
+});
+
