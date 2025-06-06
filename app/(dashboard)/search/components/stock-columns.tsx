@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { StockType } from "@/Schemas/api-schemas";
+import { StockType } from "@/schemas/api-schemas";
 
 export const columns: ColumnDef<StockType>[] = [
     {

@@ -1,5 +1,5 @@
 
-import { OwnedStocksSchema, OwnedStocksType } from "@/Schemas/user-schema";
+import { OwnedStocksSchema, OwnedStocksType } from "@/schemas/user-schema";
 
 export const getUserOwnedStocks = async (userId: string): Promise<OwnedStocksType> => {
   const response = await fetch(`/api/dynamodb/users/${userId}/owned`);

@@ -9,7 +9,10 @@ import {
   StockDataType, 
   StockQuoteType, 
   StockType 
-} from "@/Schemas/api-schemas";
+} from "@/schemas/api-schemas";
+
+import { StockDetails } from "./stock-details";
+import { AllStockDetails } from "./all-stock-details";
 
 type Props = {
   isOpen: boolean;
@@ -43,19 +46,9 @@ export const StockModal = ({
           </CardHeader>
           <CardContent className="space-y-2 max-h-[70vh] overflow-y-auto">
             {stock ? (
-              <div>
-                <p><strong>Price:</strong> ${Number(stock.price).toFixed(2)}</p>
-                <p><strong>Change:</strong> ${Number(stock.change_amount).toFixed(2)}</p>
-                <p><strong>Change %:</strong> {stock.change_percentage}</p>
-                <p><strong>High:</strong> ${Number(stockQuote?.high).toFixed(2)}</p>
-                <p><strong>Low:</strong> ${Number(stockQuote?.low).toFixed(2)}</p>
-                <p><strong>Previous Close:</strong> ${Number(stockQuote?.previous_close).toFixed(2)}</p>
-              </div>
+              <StockDetails stock={stock} stockQuote={stockQuote} />
             ) : allStock ? (
-              <div>
-                <p><strong>Currency:</strong> {stockQuote?.currency}</p>
-                <p><strong>High:</strong> ${Number(stockQuote?.high).toFixed(2)}</p>
-              </div>
+              <AllStockDetails stockQuote={stockQuote}/>
             ) : (
               <p>No data available.</p>
             )}

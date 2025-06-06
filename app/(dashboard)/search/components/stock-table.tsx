@@ -25,9 +25,9 @@ import {
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { StockModal } from "@/components/stock-modal";
+import { StockModal } from "@/components/modal/stock-modal";
 
-import { StockType, StockQuoteType} from "@/Schemas/api-schemas";
+import { StockType, StockQuoteType} from "@/schemas/api-schemas";
 
 interface StockTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

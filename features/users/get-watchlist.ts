@@ -1,5 +1,5 @@
 
-import { WatchList, WatchListType } from "@/Schemas/user-schema";
+import { WatchList, WatchListType } from "@/schemas/user-schema";
 
 export const getUserWatchList = async (userId: string): Promise<WatchListType> => {
   const response = await fetch(`/api/dynamodb/users/${userId}/watchlist`);

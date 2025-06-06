@@ -14,7 +14,7 @@ import { TopGainersGrid } from "./components/gainers-losers/all-gainers-grid";
 import { TopLosersGrid } from "./components/gainers-losers/all-losers-grid";
 import { TopTradedGrid } from "./components/gainers-losers/all-most-traded.grid";
 
-import { StockType, StockAPIResponse } from "@/Schemas/api-schemas";
+import { StockType, StockAPIResponse } from "@/schemas/api-schemas";
 
 export default function SearchPage() {
   const [stocks, setStocks] = useState<StockType[]>([]);

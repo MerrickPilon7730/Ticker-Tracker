@@ -1,5 +1,5 @@
 
-import { StockAPIResponse, StockAPIResponseSchema } from "@/Schemas/api-schemas";
+import { StockAPIResponse, StockAPIResponseSchema } from "@/schemas/api-schemas";
 
 
 export const getAllStocks = async (): Promise<StockAPIResponse> => {

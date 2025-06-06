@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { getAllGainers } from "@/features/search/api/get-market-movers";
 import { getStockQuote } from "@/features/search/api/get-stock-quote";
 
-import { StockModal } from "@/components/stock-modal";
+import { StockModal } from "@/components/modal/stock-modal";
 
 import { GainersLosersCard } from "./gainers-losers-card";
 
-import { StockDataType, StockQuoteType } from "@/Schemas/api-schemas";
+import { StockDataType, StockQuoteType } from "@/schemas/api-schemas";
 
 export const TopGainersGrid = () => {
   const [gainers, setGainers] = useState<StockDataType[]>([]);

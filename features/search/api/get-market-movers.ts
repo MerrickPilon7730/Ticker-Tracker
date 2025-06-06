@@ -2,7 +2,7 @@ import {
   StockDataType,
   GainersLosersDataType,
   GainersLosersData,
-} from "@/Schemas/api-schemas";
+} from "@/schemas/api-schemas";
 
 let cachedData: GainersLosersDataType | null = null;
 let lastFetchTime = 0;
