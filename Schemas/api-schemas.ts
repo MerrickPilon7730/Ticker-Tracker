@@ -10,6 +10,7 @@ export const Stock = z.object({
 
 export type StockType = z.infer<typeof Stock>;
 
+// API responce for get all stocks from Twelve Data
 export const StockAPIResponseSchema = z.object({
   data: z.array(Stock),
   count: z.number(),
@@ -18,12 +19,14 @@ export const StockAPIResponseSchema = z.object({
 
 export type StockAPIResponse = z.infer<typeof StockAPIResponseSchema>;
 
+// Stock Price from Twelve Data
 export const StockPrice = z.object({
   price: z.string(),
 });
 
 export type StockPriceType = z.infer<typeof StockPrice>;
 
+// Stock data from Gainers and losers- Alpha Vantage
 export const StockData = z.object({
   ticker: z.string(),
   price: z.string(),
@@ -34,6 +37,7 @@ export const StockData = z.object({
 
 export type StockDataType = z.infer<typeof StockData>;
 
+//API responce from Alpha Vantage for gainers-losers
 export const GainersLosersData = z.object({
   metadata: z.string(),
   last_updated: z.string(),
@@ -44,6 +48,7 @@ export const GainersLosersData = z.object({
 
 export type GainersLosersDataType = z.infer<typeof GainersLosersData>;
 
+// Fifty two weeks from stock Quote-Twelve Data
 export const FiftyTwoWeek = z.object({
   low: z.string(),
   high: z.string(),
@@ -56,6 +61,7 @@ export const FiftyTwoWeek = z.object({
 
 export type FiftyTwoWeekType = z.infer<typeof FiftyTwoWeek>;
 
+// Stock quote from Twelve Data
 export const StockQuote = z.object({
   symbol: z.string(),
   name: z.string(),
