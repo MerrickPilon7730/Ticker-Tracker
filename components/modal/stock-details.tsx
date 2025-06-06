@@ -7,12 +7,25 @@ type StockDetailsProps = {
 };
 
 export const StockDetails = ({ stock, stockQuote }: StockDetailsProps) => (
-  <div>
-    <p><strong>Price:</strong> ${Number(stock.price).toFixed(2)}</p>
-    <p><strong>Change:</strong> ${Number(stock.change_amount).toFixed(2)}</p>
-    <p><strong>Change %:</strong> {stock.change_percentage}</p>
-    <p><strong>High:</strong> ${Number(stockQuote?.high).toFixed(2)}</p>
-    <p><strong>Low:</strong> ${Number(stockQuote?.low).toFixed(2)}</p>
-    <p><strong>Previous Close:</strong> ${Number(stockQuote?.previous_close).toFixed(2)}</p>
-  </div>
+    <div className="grid grid-cols-2">
+        <div>
+
+        </div>
+        <div>
+            <p><strong>Price:</strong> ${Number(stock.price).toFixed(2)}</p>
+            <p><strong>Change:</strong> ${Number(stock.change_amount).toFixed(2)}</p>
+            <p>
+                <strong>Change %:</strong> 
+                {( () => {
+                    const cleaned = stock.change_percentage.replace(/%/g, "");
+                    const num = Number(cleaned);
+                    return isNaN(num) ? stock.change_percentage : num.toFixed(2);
+                })()}%
+            </p>
+            <p><strong>High:</strong> ${Number(stockQuote?.high).toFixed(2)}</p>
+            <p><strong>Low:</strong> ${Number(stockQuote?.low).toFixed(2)}</p>
+            <p><strong>Previous Close:</strong> ${Number(stockQuote?.previous_close).toFixed(2)}</p>
+        </div>
+    </div>
+    
 );
