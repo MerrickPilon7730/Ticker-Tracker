@@ -1,15 +1,21 @@
 
-import { StockDataType, StockQuoteType } from "@/schemas/api-schemas";
+import { StockDataType, StockQuoteType, TimeSeriesDailyType } from "@/schemas/api-schemas";
+import { LineChartVariant } from "../graphs/linechart";
 
 type StockDetailsProps = {
   stock: StockDataType;
   stockQuote: StockQuoteType | null;
+  timeSeries: TimeSeriesDailyType | null;
 };
 
-export const StockDetails = ({ stock, stockQuote }: StockDetailsProps) => (
+export const StockDetails = ({ stock, stockQuote, timeSeries }: StockDetailsProps) => (
     <div className="grid grid-cols-2">
         <div>
-
+            {timeSeries ? (
+                <LineChartVariant data={timeSeries} />
+            ) : (
+                <p className="text-white">Loading chart...</p>
+            )}
         </div>
         <div>
             <p><strong>Price:</strong> ${Number(stock.price).toFixed(2)}</p>

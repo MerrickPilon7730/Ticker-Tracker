@@ -8,7 +8,8 @@ import {
 import { 
   StockDataType, 
   StockQuoteType, 
-  StockType 
+  StockType, 
+  TimeSeriesDailyType
 } from "@/schemas/api-schemas";
 
 import { StockDetails } from "./stock-details";
@@ -20,6 +21,7 @@ type Props = {
   stock?: StockDataType | null;
   allStock?: StockType | null;
   stockQuote: StockQuoteType | null;
+  timeSeries: TimeSeriesDailyType | null;
 };
 
 export const StockModal = ({
@@ -28,6 +30,7 @@ export const StockModal = ({
   stock,
   stockQuote,
   allStock,
+  timeSeries
 }: Props) => {
   if (!isOpen) return null;
   // TODO: fix layout of modal, make it bigger, get more data from API
@@ -46,7 +49,7 @@ export const StockModal = ({
           </CardHeader>
           <CardContent className="space-y-2 max-h-[70vh] overflow-y-auto">
             {stock ? (
-              <StockDetails stock={stock} stockQuote={stockQuote} />
+              <StockDetails stock={stock} stockQuote={stockQuote} timeSeries={timeSeries} />
             ) : allStock ? (
               <AllStockDetails stockQuote={stockQuote}/>
             ) : (
