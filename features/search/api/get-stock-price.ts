@@ -8,13 +8,13 @@ export const getStockPrice = async (symbol: string): Promise<StockPriceType> => 
         throw new Error("Failed to fetch data");
     };
 
-      const data = await response.json();
+    const data = await response.json();
     
-      const parsedData = StockPrice.safeParse(data);
+    const parsedData = StockPrice.safeParse(data);
     
-      if (!parsedData.success) {
-        throw new Error("Invalid response format for stock price");
-      }
+    if (!parsedData.success) {
+      throw new Error("Invalid response format for stock price");
+    }
 
     return parsedData.data;
 };
