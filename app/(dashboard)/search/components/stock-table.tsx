@@ -14,6 +14,7 @@ import {
 } from "@tanstack/react-table";
 
 import { getStockQuote } from "@/features/search/api/get-stock-quote";
+import { getDailyTimeSeries } from "@/features/chart-data/get-time-series-daily";
 
 import {
   Table,
@@ -27,7 +28,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { StockModal } from "@/components/modal/stock-modal";
 
-import { StockType, StockQuoteType} from "@/schemas/api-schemas";
+import { StockType, StockQuoteType, TimeSeriesDailyType} from "@/schemas/api-schemas";
 
 interface StockTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -51,6 +52,7 @@ export function StockTable<TData extends StockType, TValue>({
   const [selectedStock, setSelectedStock] = useState<TData | null>(null);
   const [stockQuote, setStockQuote] = useState<StockQuoteType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [timeSeries, setTimeSeries] = useState<TimeSeriesDailyType | null>(null);
 
   const handleRowClick = (stock: TData) => {
     setSelectedStock(stock);
@@ -60,6 +62,8 @@ export function StockTable<TData extends StockType, TValue>({
     useEffect(() => {
       if (selectedStock){
         getStockQuote(selectedStock.symbol).then(setStockQuote);
+        getDailyTimeSeries(selectedStock.symbol).then(setTimeSeries);
+
       }
     }, [selectedStock]);
 
@@ -166,6 +170,7 @@ export function StockTable<TData extends StockType, TValue>({
         onClose={handleClose}
         allStock={selectedStock as StockType}
         stockQuote={stockQuote}
+        timeSeries={timeSeries}
       />
     </div>
   );
