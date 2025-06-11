@@ -9,7 +9,7 @@ type StockDetailsProps = {
 };
 
 export const StockDetails = ({ stock, stockQuote, timeSeries }: StockDetailsProps) => (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 gap-x-8">
         <div>
             {timeSeries ? (
                 <LineChartVariant data={timeSeries} />

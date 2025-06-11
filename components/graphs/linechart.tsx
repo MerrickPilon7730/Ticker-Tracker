@@ -5,7 +5,6 @@ import {
     YAxis,
     LineChart,
     ResponsiveContainer,
-    CartesianGrid,
     Line,
 } from "recharts";
 
@@ -36,22 +35,35 @@ export const LineChartVariant = ({data}: Props) => {
 
     return(
         <ResponsiveContainer>
-            <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3"/>
+            <LineChart 
+              data={chartData} 
+              >
                 <XAxis 
-                    axisLine={false}
-                    tickLine={false}
-                    dataKey="date"
-                    style={{ fontSize: "12px" }}
-                    tickMargin={16}
-                    interval={4}
+                  tickLine={false}
+                  dataKey="date"
+                  style={{ fontSize: "12px" }}
+                  tickMargin={16}
+                  interval={4}
+                  stroke="white"
+                  label={{
+                    value: "Year to date",
+                    fill: "white"
+                  }}
                 />
-                <YAxis />
+                <YAxis 
+                  stroke="white"
+                  label={{
+                    value: "Price",
+                    fill: "white",
+                    angle: -90,
+                    dx: -20,
+                  }}
+                />
                 <Tooltip />
                 <Line 
                     dot={false}
                     dataKey="price"
-                    stroke="#3d82f6"
+                    stroke="black"
                     strokeWidth={2}
                 />
             </LineChart>
